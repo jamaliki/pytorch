@@ -279,10 +279,13 @@ jobs:
       cuda-version: "11.3"
       test-matrix: |
         { include: [
-          { config: "default", shard: 1, num_shards: 2, runner: "windows.8xlarge.nvidia.gpu" },
-          { config: "default", shard: 2, num_shards: 2, runner: "windows.8xlarge.nvidia.gpu" },
+          { config: "default", shard: 1, num_shards: 3, runner: "windows.8xlarge.nvidia.gpu" },
+          { config: "default", shard: 2, num_shards: 3, runner: "windows.8xlarge.nvidia.gpu" },
+          { config: "default", shard: 3, num_shards: 3, runner: "windows.8xlarge.nvidia.gpu" },
           { config: "force_on_cpu", shard: 1, num_shards: 1, runner: "windows.4xlarge" },
         ]}
+      # until tests get created that need submodules, set submodules to false b/c takes a while (maybe 4-5 min?)
+      submodules: false
 
   linux-xenial-cuda11_3-py3_7-gcc7-bazel-test:
     name: linux-xenial-cuda11.3-py3.7-gcc7-bazel-test
