@@ -15,11 +15,6 @@ on:
         required: true
         type: string
         description: JSON description of what test configs to run.
-      pytorch-submodules:
-        required: false
-        type: string
-        default: recursive
-        description: set to false if don't need to checkout submodules when checking out pytorch
 
 env:
   IN_CI: 1 # TODO delete in favor of GITHUB_ACTIONS
@@ -41,7 +36,6 @@ jobs:
         uses: pytorch/pytorch/.github/actions/checkout-pytorch@master
         with:
           no-sudo: true
-          submodules: ${{ inputs.pytorch-submodules }}
 
       - name: Setup Windows
         uses: ./.github/actions/setup-win
