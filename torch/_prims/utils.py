@@ -678,6 +678,6 @@ def compute_reduction_output_shape(
 def reduction_dims(shape: ShapeType, dims: Optional[Sequence]) -> Tuple[int, ...]:
     if dims is None:
         return tuple(range(len(shape)))
-    dims = tuple(canonicalize_di(len(shape), idx) for idx in dims)
+    dims = tuple(canonicalize_dims(len(shape), idx) for idx in dims)
     assert len(dims) == len(set(dims)), "duplicate value in dims"
     return dims
